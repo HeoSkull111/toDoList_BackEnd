@@ -14,5 +14,7 @@ export class Note {
     dateCreated: string;
     @Prop()
     status: string;
+    @Prop()
+    userID: string;
 }
 export const NoteSchema = SchemaFactory.createForClass(Note);

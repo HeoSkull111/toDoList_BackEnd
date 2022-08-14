@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Note, NoteSchema } from 'src/Schemas/note.schema';
+import { AuthService } from 'src/services/auth/auth.service';
 import { NoteService } from './services/note/note.service';
 
 @Module({
@@ -10,6 +11,6 @@ import { NoteService } from './services/note/note.service';
         ])
     ],
     exports: [NoteService],
-    providers: [NoteService],
+    providers: [NoteService,AuthService],
 })
 export class NotesModule { }

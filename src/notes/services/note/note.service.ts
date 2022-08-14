@@ -19,12 +19,20 @@ export class NoteService {
         return await this.noteModel.find().exec();
     }
     async findByContent(content: string) {
-        return await this.noteModel.find({ content: content }).exec();
+        return await this.noteModel.find({ 
+            content: content }
+        ,{},{
+            sort: {
+                dateCreated: -1
+            },
+            skip: 0,
+            limit: 10
+        }).exec();
     }
     async deleteNote(id: string) {
         return await this.noteModel.findByIdAndDelete(id).exec();
     }
     async updateNote(id: string, note: NoteModel) {
-        return await this.noteModel.findByIdAndUpdate(id, note).exec();
+        return await this.noteModel.findByIdAndUpdate(id, note, {new:true}).exec();
     }
 }
